@@ -9,17 +9,25 @@ const regexPatterns = {
     ipv6: /^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^[0-9a-fA-F]{1,4}::([0-9a-fA-F]{1,4}:){0,4}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}:([0-9a-fA-F]{1,4}:){0,3}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,4}:([0-9a-fA-F]{1,4}:){0,4}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,3}:([0-9a-fA-F]{1,4}:){0,5}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,2}:([0-9a-fA-F]{1,4}:){0,6}[0-9a-fA-F]{1,4}$|^[0-9a-fA-F]{1,4}::([0-9a-fA-F]{1,4}:){0,6}[0-9a-fA-F]{1,4}$|^:((:[0-9a-fA-F]{1,4}){1,7}|:)$/,
     creditcard: /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9]{2})[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])?[0-9]{11})$/,
     html: `<([a-zA-Z][a-zA-Z0-9]*)\\b[^>]*>.*?<\\/\\1>|<.*? \\/>`,
-    zip: /^\d{5}(?:[-\s]\d{4})?$/,
-    phone: /^(?:[\+0-9]?)[0-9]{6,14}$/,
+    zipus: /^\d{5}(?:[-\s]\d{4})?$/,
+    phoneindia: /^\+?(91)?[\s-]?\d{10}$/,
+    phoneus: /^\+?1?\s*\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+    phoneuk: /^\+?(44)?\s?(\(0\))?\s?[0-9]{4}\s?[0-9]{3}\s?[0-9]{3}$/,
+    phoneaus: /^\+?(44)?\s?(\(0\))?\s?[0-9]{4}\s?[0-9]{3}\s?[0-9]{3}$/,
+    phonecan: /^\+?(1)?[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}$/,
     pin: /^\d{6}$/
 }
 
-export function validateString(inputString, regexType) {
-    if (!(regexType in regexPatterns)) {
-        console.error('Invalid regex type');
-        return false;
+export function validateString(inputString, regexType = null, userInput = null) {
+    if (userInput === null) {
+        if (!(regexType in regexPatterns)) {
+            console.error('Invalid regex type');
+            return false;
+        }
+        return regexPatterns[regexType].test(inputString);
+    } else {
+        return userInput.test(inputString);
     }
-    return regexPatterns[regexType].test(inputString);
 }
 
 export function analyzeLog(logText) {
@@ -60,3 +68,11 @@ export function parseUrl(url) {
         return null;
     }
 };
+
+export function getRegex(regexName) {
+    if (!(regexName in regexPatterns)) {
+        console.error('Invalid regex type');
+        return false;
+    }
+    return regexPatterns[regexName];
+}

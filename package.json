@@ -1,6 +1,6 @@
 {
   "name": "text-regex-validation",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This is npm package for validation of texts ",
   "main": "index.js",
   "type": "module",
