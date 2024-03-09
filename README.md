@@ -11,6 +11,10 @@ This package includes the following functionalities 🐻
 - **URL Parsing:** Create functions that parse URLs into their component parts. Regular expressions can help with this by matching different parts of the URL (protocol, domain, path, query parameters, etc.) and extracting them into separate variables or objects.
 
 - **Get Regex:** Create functions that return regex pattern for different inputs from user.
+
+- - **Convert base64ToString:** This method will return string if we provide base64 value to it.
+ 
+- - **Convert stringToBase64:** This method will return base64 if we provide string value to it.
 ## Installation
 
 ```bash
@@ -38,7 +42,10 @@ getRegex(regexType) // Regex Type will be same from the below regexType name It 
 __regexType name must be same__
 
 it will return **true or false(Boolean)**.
-
+# Example
+``` js
+import {validateString,analyzeLog, searchAndReplace,parseUrl, base64ToString, stringToBase64} from 'text-regex-validation'
+```
 ### TABLE
 
 | regexType name | Input String Example | Description |
@@ -65,27 +72,15 @@ it will return **true or false(Boolean)**.
 | username | `username123` | This is for validation of userName |
 
 
-### **Log Analysis:**
-
-### **Search and Replace:**
-
-### **URL Parsing:**
-
-### **Get Regex:**
-
-# Example
-
-```.js
-import {validateString,analyzeLog, searchAndReplace,parseUrl} from 'text-regex-validation'
-
+``` js
 validateString("example@example.com", 'email')
 
 // output :- true
+```
 
-validateString("1234567890", null, /^\+?(91)?[\s-]?\d{10}$/)
+### **Log Analysis:**
 
-// output :- true
-
+```js
 analyzeLog('[2024-03-03 10:17:20] ERROR: Invalid username or password')
 
 // output :- [
@@ -96,10 +91,20 @@ analyzeLog('[2024-03-03 10:17:20] ERROR: Invalid username or password')
 //  }
 // ]
 
+```
+
+### **Search and Replace:**
+
+```js
 searchAndReplace('This is sample data', 'is', 'not')
 
 // output :- This not sample data
 
+```
+
+### **URL Parsing:**
+
+```js
 parseUrl('https://www.example.com:8080/path/to/page?param1=value1&param2=value2#section1')
 
 // output :- {
@@ -111,9 +116,36 @@ parseUrl('https://www.example.com:8080/path/to/page?param1=value1&param2=value2#
 //  fragment: 'section1'
 // }
 
+```
+
+### **Get Regex:**
+
+``` js
 getRegex('phoneindia')
 
 // output :- /^\+?(91)?[\s-]?\d{10}$/
+
+```
+
+### **Convert base64ToString:**
+
+```.js
+
+const base64String = 'SGVsbG8sIFdvcmxkIQ==';
+console.log(base64ToString(base64String));
+
+// output :- Hello, World!
+
+```
+
+### **Convert stringToBase64:**
+
+```.js
+
+const base64String = 'Hello, World!';
+console.log(stringToBase64(base64String));
+
+// output :- SGVsbG8sIFdvcmxkIQ==
 
 ```
 

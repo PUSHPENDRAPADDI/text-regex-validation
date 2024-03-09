@@ -76,3 +76,15 @@ export function getRegex(regexName) {
     }
     return regexPatterns[regexName];
 }
+
+export function base64ToString(base64) {
+    return atob(base64);
+}
+export function stringToBase64(str) {
+    return btoa(str);
+}
+
+const base64String = 'Hello, World!';
+
+console.log(stringToBase64(base64String));
+
