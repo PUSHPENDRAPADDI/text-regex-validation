@@ -12,9 +12,12 @@ This package includes the following functionalities 🐻
 
 - **Get Regex:** Create functions that return regex pattern for different inputs from user.
 
-- - **Convert base64ToString:** This method will return string if we provide base64 value to it.
+- **Convert base64ToString:** This method will return string if we provide base64 value to it.
  
-- - **Convert stringToBase64:** This method will return base64 if we provide string value to it.
+- **Convert stringToBase64:** This method will return base64 if we provide string value to it.
+
+- **getCountryCallingCode:** This method will return country list with its calling code's.
+
 ## Installation
 
 ```bash
@@ -147,6 +150,17 @@ console.log(stringToBase64(base64String));
 
 // output :- SGVsbG8sIFdvcmxkIQ==
 
+```
+
+### **getCountryCallingCode:**
+
+```.js
+
+getCountryCallingCode()
+// output :- Without parameter It will return list of all countries
+
+getCountryCallingCode("india")
+// output :- { name: 'india', dial_code: '+91', code: 'IN' }
 ```
 
 # Build
